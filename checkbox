@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+	<head>
+	
+		<script src="https://code.jquery.com/jquery-2.2.3.min.js"></script>
+	
+		<title>Mondays to do list</title>
+		<style type="text/css">
+		
+			
+			
+		</style>
+	</head>
+	
+	<body>
+	
+										<!--MONDAY LIST -->
+
+		<div class="wrap">
+  
+  <form action="" method="POST">
+    <div id="checkbox-container">
+      <input type="checkbox" id="name" name="new_background" /></br>
+	  <input type="checkbox" id="name1" name="new_background" /></br>
+	  <input type="checkbox" id="name2" name="new_background" /></br>
+	  <input type="checkbox" id="name3" name="new_background" /></br>
+	  <input type="checkbox" id="name4" name="new_background" />
+    </div>
+
+    
+  </form>
+  <script>
+    var checkboxValue = JSON.parse(localStorage.getItem('checkboxValue')) || {}
+    var $checkbox = $("#checkbox-container :checkbox");
+
+    $checkbox.on("change", function() {
+      $checkbox.each(function() {
+        checkboxValue[this.id] = this.checked;
+      });
+      localStorage.setItem("checkboxValue", JSON.stringify(checkboxValue));
+    });
+
+    //on page load
+    $.each(checkboxValue, function(key, value) {
+      $("#" + key).prop('checked', value);
+    });
+  </script>
+</div>
+	
+	</body>
+
+</html>
